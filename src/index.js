@@ -7,8 +7,15 @@ dotenv.config({
     path: ".env"
 });
 
-connectDB();
-
+connectDB()   // asynchronous function always return a promise
+.then(()=>{
+    application.listen(process.env.PORT || 8000, ()=>{
+        console.log(`Server is running at port : ${process.env.PORT}`);
+    })
+})
+.catch((error)=>{
+    console.log("Database connection failed !!! ", error);
+})
 
 
 
