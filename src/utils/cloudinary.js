@@ -17,7 +17,9 @@ import { v2 as cloudinary } from 'cloudinary';
         if(!localfilePath) return null
         // Upload video
         const response = await cloudinary.uploader.upload(localfilePath, {resource_type: "auto"})
-        console.log("file uploaded successfully",response.url);
+        // console.log("file uploaded successfully",response.url);
+        // Check if the file exists before deleting
+        fs.unlinkSync(localfilePath); // delete the file
         return response;
     } catch (error) {
         fs.unlinkSync(localfilePath); // delete the file

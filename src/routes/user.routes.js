@@ -10,6 +10,6 @@ const router = express.Router();
 // ]),registerUser);
 router.route("/register").post(upload.fields([
     {name: "avatar", maxCount: 1},
-    {name: "coverImages", maxCount: 3}
+    {name: "coverImage", maxCount: 3}
 ]), registerUser);
 export default router;   
